@@ -427,11 +427,11 @@ export function Model(props) {
               castShadow
               receiveShadow
               geometry={nodes.Mesh010.geometry}
-              onClick={() => setDoor2Open((prev) => !prev)}
+              onClick={() => !isDoor1Hovered && setDoor2Open((prev) => !prev)}
               onPointerOver={() => setIsDoor2Hovered(true)}
               onPointerOut={() => setIsDoor2Hovered(false)}>
               <meshStandardMaterial
-                color={isDoor2Hovered ? "#846D41" : "#625850"}
+                color={!isDoor1Hovered && isDoor2Hovered ? "#846D41" : "#625850"}
               />
             </mesh>
             <mesh
