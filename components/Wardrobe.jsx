@@ -9,6 +9,8 @@ export function Model(props) {
   const { nodes, materials, animations } = useGLTF("/shkaf.gltf");
   const { actions } = useAnimations(animations, group);
 
+  const [busy, setBusy] = useState(false);
+
   const [door1Open, setDoor1Open] = useState(false);
   const door1 = useRef();
   const [door2Open, setDoor2Open] = useState(false);
@@ -25,6 +27,8 @@ export function Model(props) {
   const clothes = useRef();
   const [cartClose, setCartClose] = useState(true);
   const cart = useRef();
+  const [pgraphClose, setPgraphClose] = useState(true);
+  const pgraph = useRef();
 
   const [isDoor1Hovered, setIsDoor1Hovered] = useState(false);
   const [isDoor2Hovered, setIsDoor2Hovered] = useState(false);
@@ -34,23 +38,29 @@ export function Model(props) {
   const [isShkaf4Hovered, setIsShkaf4Hovered] = useState(false);
   const [isClothesHovered, setIsClothesHovered] = useState(false);
   const [isCartHovered, setIsCartHovered] = useState(false);
+  const [isPgraphHovered, setIsPgraphHovered] = useState(false);
 
   useFrame(() => {
     if (door1Open) {
       setShkaf1Close(true);
       setClotheClose(true);
+      setBusy(true)
       door1.current.position.z -= 1; // Измените это значение, чтобы настроить скорость открытия
       if (door1.current.position.z <= 5) {
         door1.current.position.z = 5; // Максимальное положение, когда дверца полностью открыта
+        setBusy(false)
       }
     } else if (!door1Open) {
       setShkaf2Close(true);
       setShkaf3Close(true);
       setShkaf4Close(true);
       setCartClose(true);
+      setPgraphClose(true)
+      setBusy(true)
       door1.current.position.z += 1; // Измените это значение, чтобы настроить скорость закрытия
       if (door1.current.position.z >= 150) {
         door1.current.position.z = 150; // Максимальное положение, когда дверца полностью закрыта
+        setBusy(false)
       }
     }
   });
@@ -59,18 +69,23 @@ export function Model(props) {
     if (door2Open) {
       setShkaf1Close(true);
       setClotheClose(true);
+        setBusy(true)
       door2.current.position.z -= 1; // Измените это значение, чтобы настроить скорость открытия
       if (door2.current.position.z <= -15) {
         door2.current.position.z = -15; // Максимальное положение, когда дверца полностью открыта
+        setBusy(false)
       }
     } else if (!door2Open) {
       setShkaf2Close(true);
       setShkaf3Close(true);
       setShkaf4Close(true);
       setCartClose(true);
+      setPgraphClose(true)
+        setBusy(true)
       door2.current.position.z += 1; // Измените это значение, чтобы настроить скорость закрытия
       if (door2.current.position.z >= 120) {
         door2.current.position.z = 120; // Максимальное положение, когда дверца полностью закрыта
+        setBusy(false)
       }
     }
   });
@@ -155,6 +170,20 @@ export function Model(props) {
       cart.current.position.x += 0.01; // Измените это значение, чтобы настроить скорость закрытия
       if (cart.current.position.x >= 0.15) {
         cart.current.position.x = 0.15; // Максимальное положение, когда дверца полностью закрыта
+      }
+    }
+  });
+  
+  useFrame(() => {
+    if (pgraphClose) {
+      pgraph.current.rotation.z += 0.01; // Измените это значение, чтобы настроить скорость открытия
+      if (pgraph.current.rotation.z >= 0) {
+        pgraph.current.rotation.z = 0; // Максимальное положение, когда дверца полностью открыта
+      }
+    } else if (!pgraphClose) {
+        pgraph.current.rotation.z -= 0.01; // Измените это значение, чтобы настроить скорость закрытия
+      if (pgraph.current.rotation.z <= -0.47) {
+        pgraph.current.rotation.z = -0.47; // Максимальное положение, когда дверца полностью закрыта
       }
     }
   });
@@ -359,6 +388,12 @@ export function Model(props) {
             material={materials["Material #25"]}
             position={[-22.5, -111.40000916, -0.02796554]}
           />
+          <Html className="pointer-events-none "  position={[0, 0.90882832, 61.67114639]}>
+            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${isDoor1Hovered || isDoor2Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p>Дверца</p>
+                <p>Нажмите что бы открыть</p>
+            </div>
+        </Html>
           <group
             ref={door1}
             name="door1"
@@ -681,6 +716,12 @@ export function Model(props) {
             material={materials.Closet_Clothes_22_71}
           />
         </group>
+        <Html className="pointer-events-none "  position={[0, 0.08572441, 0.31679869]}>
+            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isCartHovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p>Корзинка</p>
+                <p>{door2Open && door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
+            </div>
+        </Html>
         <mesh
           name="cart"
           ref={cart}
@@ -691,10 +732,10 @@ export function Model(props) {
           position={[-0.03425545, 0.08572441, 0.31679869]}
           rotation={[0, 1.57053468, 0]}
           scale={[0.01122629, 0.01, 0.01]}
-          onClick={() => door2Open && door1Open && setCartClose((prev) => !prev)}
-          onPointerOver={() => setIsCartHovered(true)}
+          onClick={() => door2Open && door1Open && !busy && setCartClose((prev) => !prev)}
+          onPointerOver={() => !isDoor1Hovered && !isDoor2Hovered && setIsCartHovered(true)}
           onPointerOut={() => setIsCartHovered(false)}>
-          <meshStandardMaterial color={isCartHovered ? `${(door2Open && door1Open) ? "#846D41" :"#842F38" }` : "#EFEFEF"} />
+          <meshStandardMaterial color={isCartHovered ? `${(door2Open && door1Open && !busy) ? "#846D41" :"#842F38" }` : "#EFEFEF"} />
         </mesh>
         <mesh
           name="Box032"
@@ -741,15 +782,22 @@ export function Model(props) {
           position={[0.05704273, 1.74500024, -0.36249992]}
           scale={0.01}
         />
+        <Html className="pointer-events-none "  position={[0, 1.26567757, -0.35959378]}>
+            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isClothesHovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p>Вешалка</p>
+                <p>{!door2Open && !door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
+            </div>
+        </Html>
         <group
           name="Group004"
           position={[-0.01809825, 1.26567757, -0.35959378]}
           scale={0.01}>
           <group
             name="clothes"
+            
             ref={clothes}
             onClick={() =>
-              !door2Open && !door1Open && setClotheClose((prev) => !prev)
+              !door2Open && !door1Open && !busy && setClotheClose((prev) => !prev)
             }
             position={[-19.04509544, 45.0717392, -0.29061902]}>
             <mesh
@@ -841,10 +889,10 @@ export function Model(props) {
               castShadow
               receiveShadow
               geometry={nodes.Mesh044_12.geometry}
-              onPointerOver={() => setIsClothesHovered(true)}
+              onPointerOver={() => !isDoor1Hovered && !isDoor2Hovered && setIsClothesHovered(true)}
               onPointerOut={() => setIsClothesHovered(false)}>
               <meshStandardMaterial
-                color={isClothesHovered ? `${(!door2Open && !door1Open) ? "#846D41" :"#842F38" }` : "#87597A"}
+                color={isClothesHovered ? `${(!door2Open && !door1Open && !busy) ? "#846D41" :"#842F38" }` : "#87597A"}
               />
             </mesh>
             <mesh
@@ -852,10 +900,10 @@ export function Model(props) {
               castShadow
               receiveShadow
               geometry={nodes.Mesh044_13.geometry}
-              onPointerOver={() => setIsClothesHovered(true)}
+              onPointerOver={() => !isDoor1Hovered && !isDoor2Hovered && setIsClothesHovered(true)}
               onPointerOut={() => setIsClothesHovered(false)}>
               <meshStandardMaterial
-                color={isClothesHovered ? `${(!door2Open && !door1Open) ? "#846D41" :"#842F38" }` : "#87597A"}
+                color={isClothesHovered ? `${(!door2Open && !door1Open && !busy) ? "#846D41" :"#842F38" }` : "#87597A"}
               />
             </mesh>
             <mesh
@@ -876,8 +924,20 @@ export function Model(props) {
           position={[-0.04855613, 0.82828361, 1.22197366]}
           scale={0.01}
         />
+        <Html className="pointer-events-none "  position={[0, 0.90882832, 0.87950003]}>
+            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isPgraphHovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p>Пантограф</p>
+                <p>{door2Open && door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
+            </div>
+        </Html>
         <group
           name="Group005"
+          ref={pgraph}
+          onPointerOver={() => !isDoor1Hovered && !isDoor2Hovered && setIsPgraphHovered(true)}
+          onPointerOut={() => setIsPgraphHovered(false)}
+          onClick={() =>
+              door2Open && door1Open && !busy && setPgraphClose((prev) => !prev)
+            }
           position={[0.02950783, 0.90882832, 0.87950003]}
           scale={0.01}>
           <group
@@ -894,18 +954,22 @@ export function Model(props) {
               name="Mesh053_1"
               castShadow
               receiveShadow
-              geometry={nodes.Mesh053_1.geometry}
-              material={materials["Material #2097647922"]}
-            />
+              geometry={nodes.Mesh053_1.geometry}>
+              <meshStandardMaterial
+                color={isPgraphHovered ? `${(door2Open && door1Open && !busy) ? "#846D41" :"#842F38" }` : "#B6B6B6"}
+              />
+            </mesh>
           </group>
           <mesh
             name="Circle001"
             castShadow
             receiveShadow
             geometry={nodes.Circle001.geometry}
-            material={materials["Material #2097647922"]}
-            position={[-2.95078325, -90.31665039, -87.94998932]}
-          />
+            position={[-2.95078325, -90.31665039, -87.94998932]}>
+            <meshStandardMaterial
+              color={isPgraphHovered ? `${(door2Open && door1Open && !busy) ? "#846D41" :"#842F38" }` : "#B6B6B6"}
+            />
+          </mesh>
         </group>
         <group
           name="vm_v4_020_Part_23"
@@ -956,6 +1020,12 @@ export function Model(props) {
             material={materials.Metall_vm_v4_020_2_37}
           />
         </group>
+        <Html className="pointer-events-none "  position={[0, 1.78750074, 0.26930958]}>
+            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf2Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p>Шкафчик</p>
+                <p>{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+            </div>
+        </Html>
         <group
           name="shkaf2"
           ref={shkaf2}
@@ -981,12 +1051,12 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Mesh063_2.geometry}
             onClick={() =>
-              door2Open && door1Open && setShkaf2Close((prev) => !prev)
+              door2Open && door1Open && !busy && setShkaf2Close((prev) => !prev)
             }
-            onPointerOver={() => setIsShkaf2Hovered(true)}
+            onPointerOver={() => !isDoor1Hovered && !isDoor2Hovered && setIsShkaf2Hovered(true)}
             onPointerOut={() => setIsShkaf2Hovered(false)}>
             <meshStandardMaterial
-              color={isShkaf2Hovered ? `${(door2Open && door1Open) ? "#846D41" :"#842F38" }` : "#625850"}
+              color={isShkaf2Hovered ? `${(door2Open && door1Open && !busy) ? "#846D41" :"#842F38" }` : "#625850"}
             />
           </mesh>
           <mesh
@@ -1140,6 +1210,12 @@ export function Model(props) {
             scale={0.83787197}
           />
         </group>
+        <Html className="pointer-events-none "  position={[0, 0.82459706, 0.26930958]}>
+            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf3Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p>Шкафчик</p>
+                <p>{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+            </div>
+        </Html>
         <group
           name="shkaf3"
           ref={shkaf3}
@@ -1165,12 +1241,12 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Mesh087_2.geometry}
             onClick={() =>
-              door2Open && door1Open && setShkaf3Close((prev) => !prev)
+              door2Open && door1Open && !busy && setShkaf3Close((prev) => !prev)
             }
-            onPointerOver={() => setIsShkaf3Hovered(true)}
+            onPointerOver={() => !isDoor1Hovered && !isDoor2Hovered && setIsShkaf3Hovered(true)}
             onPointerOut={() => setIsShkaf3Hovered(false)}>
             <meshStandardMaterial
-              color={isShkaf3Hovered ? `${(door2Open && door1Open) ? "#846D41" :"#842F38" }` : "#625850"}
+              color={isShkaf3Hovered ? `${(door2Open && door1Open && !busy) ? "#846D41" :"#842F38" }` : "#625850"}
             />
           </mesh>
           <mesh
@@ -1202,6 +1278,12 @@ export function Model(props) {
             material={materials["Material #25.016"]}
           />
         </group>
+        <Html className="pointer-events-none "  position={[0, 0.50621921, 0.26930958]}>
+            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf4Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p>Шкафчик</p>
+                <p>{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+            </div>
+        </Html>
         <group
           name="shkaf4"
           ref={shkaf4}
@@ -1227,12 +1309,12 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Mesh088_2.geometry}
             onClick={() =>
-              door2Open && door1Open && setShkaf4Close((prev) => !prev)
+              door2Open && door1Open && !busy && setShkaf4Close((prev) => !prev)
             }
-            onPointerOver={() => setIsShkaf4Hovered(true)}
+            onPointerOver={() => !isDoor1Hovered && !isDoor2Hovered && setIsShkaf4Hovered(true)}
             onPointerOut={() => setIsShkaf4Hovered(false)}>
             <meshStandardMaterial
-              color={isShkaf4Hovered ? `${(door2Open && door1Open) ? "#846D41" :"#842F38" }` : "#625850"}
+              color={isShkaf4Hovered ? `${(door2Open && door1Open && !busy) ? "#846D41" :"#842F38" }` : "#625850"}
             />
           </mesh>
           <mesh
@@ -1264,6 +1346,12 @@ export function Model(props) {
             material={materials["Material #25.021"]}
           />
         </group>
+        <Html className="pointer-events-none "  position={[0, 1.14772236, -0.97240204]}>
+            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf1Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p>Шкафчик</p>
+                <p>{!door2Open && !door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+            </div>
+        </Html>
         <group
           name="shkaf1"
           ref={shkaf1}
@@ -1289,12 +1377,12 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Mesh089_2.geometry}
             onClick={() =>
-              !door2Open && !door1Open && setShkaf1Close((prev) => !prev)
+              !door2Open && !door1Open && !busy && setShkaf1Close((prev) => !prev)
             }
-            onPointerOver={() => setIsShkaf1Hovered(true)}
+            onPointerOver={() => !isDoor1Hovered && !isDoor2Hovered && setIsShkaf1Hovered(true)}
             onPointerOut={() => setIsShkaf1Hovered(false)}>
             <meshStandardMaterial
-              color={isShkaf1Hovered ? `${(!door2Open && !door1Open) ? "#846D41" :"#842F38" }` : "#625850"}
+              color={isShkaf1Hovered ? `${(!door2Open && !door1Open  && !busy) ? "#846D41" :"#842F38" }` : "#625850"}
             />
           </mesh>
           <mesh
