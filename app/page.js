@@ -1,10 +1,9 @@
-import Image from 'next/image'
-import Scene from '../components/Scene'
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex bg-black min-h-screen w-screen">
-      <Scene />
+    <main className="bg-[#F0F0F0] min-h-screen w-screen grid grid-cols-8 p-20">
+      <Link className="border border-gray-200 hover:border-blue-500 bg-white font-bold backdrop-blur-xl rounded-lg px-3 py-2 text-center text-black h-fit" href={'/wardrobe'} > Wardrobe </Link>
     </main>
   )
 }

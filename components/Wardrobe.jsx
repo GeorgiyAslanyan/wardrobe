@@ -389,7 +389,7 @@ export function Model(props) {
             position={[-22.5, -111.40000916, -0.02796554]}
           />
           <Html className="pointer-events-none "  position={[0, 0.90882832, 61.67114639]}>
-            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${isDoor1Hovered || isDoor2Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${isDoor1Hovered || isDoor2Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p>Дверца</p>
                 <p>Нажмите что бы открыть</p>
             </div>
@@ -716,8 +716,8 @@ export function Model(props) {
             material={materials.Closet_Clothes_22_71}
           />
         </group>
-        <Html className="pointer-events-none "  position={[0, 0.08572441, 0.31679869]}>
-            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isCartHovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+        <Html className="pointer-events-none "  position={[0, 0.29572441, 0.31679869]}>
+            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isCartHovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p>Корзинка</p>
                 <p>{door2Open && door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
             </div>
@@ -783,7 +783,7 @@ export function Model(props) {
           scale={0.01}
         />
         <Html className="pointer-events-none "  position={[0, 1.26567757, -0.35959378]}>
-            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isClothesHovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isClothesHovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p>Вешалка</p>
                 <p>{!door2Open && !door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
             </div>
@@ -925,7 +925,7 @@ export function Model(props) {
           scale={0.01}
         />
         <Html className="pointer-events-none "  position={[0, 0.90882832, 0.87950003]}>
-            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isPgraphHovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isPgraphHovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p>Пантограф</p>
                 <p>{door2Open && door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
             </div>
@@ -1021,7 +1021,7 @@ export function Model(props) {
           />
         </group>
         <Html className="pointer-events-none "  position={[0, 1.78750074, 0.26930958]}>
-            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf2Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf2Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p>Шкафчик</p>
                 <p>{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
             </div>
@@ -1211,7 +1211,7 @@ export function Model(props) {
           />
         </group>
         <Html className="pointer-events-none "  position={[0, 0.82459706, 0.26930958]}>
-            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf3Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf3Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p>Шкафчик</p>
                 <p>{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
             </div>
@@ -1279,7 +1279,7 @@ export function Model(props) {
           />
         </group>
         <Html className="pointer-events-none "  position={[0, 0.50621921, 0.26930958]}>
-            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf4Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf4Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p>Шкафчик</p>
                 <p>{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
             </div>
@@ -1346,8 +1346,8 @@ export function Model(props) {
             material={materials["Material #25.021"]}
           />
         </group>
-        <Html className="pointer-events-none "  position={[0, 1.14772236, -0.97240204]}>
-            <div className={` bg-white rounded-xl text-center  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf1Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+        <Html className="pointer-events-none "  position={[0, 1.14772236, -0.6]}>
+            <div className={`bg-white rounded-xl text-center shadow-lg pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf1Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p>Шкафчик</p>
                 <p>{!door2Open && !door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
             </div>
