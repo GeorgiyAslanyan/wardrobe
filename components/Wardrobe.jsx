@@ -13,17 +13,17 @@ export function Model(props) {
   const door1 = useRef();
   const [door2Open, setDoor2Open] = useState(false);
   const door2 = useRef();
-  const [shkaf1Open, setShkaf1Open] = useState(true);
+  const [shkaf1Close, setShkaf1Close] = useState(true);
   const shkaf1 = useRef();
-  const [shkaf2Open, setShkaf2Open] = useState(true);
+  const [shkaf2Close, setShkaf2Close] = useState(true);
   const shkaf2 = useRef();
-  const [shkaf3Open, setShkaf3Open] = useState(true);
+  const [shkaf3Close, setShkaf3Close] = useState(true);
   const shkaf3 = useRef();
-  const [shkaf4Open, setShkaf4Open] = useState(true);
+  const [shkaf4Close, setShkaf4Close] = useState(true);
   const shkaf4 = useRef();
-  const [clothesOpen, setClotheOpen] = useState(true);
+  const [clothesClose, setClotheClose] = useState(true);
   const clothes = useRef();
-  const [cartOpen, setCartOpen] = useState(true);
+  const [cartClose, setCartClose] = useState(true);
   const cart = useRef();
 
   const [isDoor1Hovered, setIsDoor1Hovered] = useState(false);
@@ -37,17 +37,17 @@ export function Model(props) {
 
   useFrame(() => {
     if (door1Open) {
-      setShkaf1Open(true);
-      setClotheOpen(true);
+      setShkaf1Close(true);
+      setClotheClose(true);
       door1.current.position.z -= 1; // Измените это значение, чтобы настроить скорость открытия
       if (door1.current.position.z <= 5) {
         door1.current.position.z = 5; // Максимальное положение, когда дверца полностью открыта
       }
     } else if (!door1Open) {
-      setShkaf2Open(true);
-      setShkaf3Open(true);
-      setShkaf4Open(true);
-      setCartOpen(true);
+      setShkaf2Close(true);
+      setShkaf3Close(true);
+      setShkaf4Close(true);
+      setCartClose(true);
       door1.current.position.z += 1; // Измените это значение, чтобы настроить скорость закрытия
       if (door1.current.position.z >= 150) {
         door1.current.position.z = 150; // Максимальное положение, когда дверца полностью закрыта
@@ -57,17 +57,17 @@ export function Model(props) {
 
   useFrame(() => {
     if (door2Open) {
-      setShkaf1Open(true);
-      setClotheOpen(true);
+      setShkaf1Close(true);
+      setClotheClose(true);
       door2.current.position.z -= 1; // Измените это значение, чтобы настроить скорость открытия
       if (door2.current.position.z <= -15) {
         door2.current.position.z = -15; // Максимальное положение, когда дверца полностью открыта
       }
     } else if (!door2Open) {
-      setShkaf2Open(true);
-      setShkaf3Open(true);
-      setShkaf4Open(true);
-      setCartOpen(true);
+      setShkaf2Close(true);
+      setShkaf3Close(true);
+      setShkaf4Close(true);
+      setCartClose(true);
       door2.current.position.z += 1; // Измените это значение, чтобы настроить скорость закрытия
       if (door2.current.position.z >= 120) {
         door2.current.position.z = 120; // Максимальное положение, когда дверца полностью закрыта
@@ -76,12 +76,12 @@ export function Model(props) {
   });
 
   useFrame(() => {
-    if (shkaf1Open) {
+    if (shkaf1Close) {
       shkaf1.current.position.x -= 0.01; // Измените это значение, чтобы настроить скорость открытия
       if (shkaf1.current.position.x <= -0.0809543) {
         shkaf1.current.position.x = -0.0809543; // Максимальное положение, когда дверца полностью открыта
       }
-    } else if (!shkaf1Open) {
+    } else if (!shkaf1Close) {
       shkaf1.current.position.x += 0.01; // Измените это значение, чтобы настроить скорость закрытия
       if (shkaf1.current.position.x >= 0.15) {
         shkaf1.current.position.x = 0.15; // Максимальное положение, когда дверца полностью закрыта
@@ -90,12 +90,12 @@ export function Model(props) {
   });
 
   useFrame(() => {
-    if (shkaf2Open) {
+    if (shkaf2Close) {
       shkaf2.current.position.x -= 0.01; // Измените это значение, чтобы настроить скорость открытия
       if (shkaf2.current.position.x <= -0.0809543) {
         shkaf2.current.position.x = -0.0809543; // Максимальное положение, когда дверца полностью открыта
       }
-    } else if (!shkaf2Open) {
+    } else if (!shkaf2Close) {
       shkaf2.current.position.x += 0.01; // Измените это значение, чтобы настроить скорость закрытия
       if (shkaf2.current.position.x >= 0.15) {
         shkaf2.current.position.x = 0.15; // Максимальное положение, когда дверца полностью закрыта
@@ -104,12 +104,12 @@ export function Model(props) {
   });
 
   useFrame(() => {
-    if (shkaf3Open) {
+    if (shkaf3Close) {
       shkaf3.current.position.x -= 0.01; // Измените это значение, чтобы настроить скорость открытия
       if (shkaf3.current.position.x <= -0.0809543) {
         shkaf3.current.position.x = -0.0809543; // Максимальное положение, когда дверца полностью открыта
       }
-    } else if (!shkaf3Open) {
+    } else if (!shkaf3Close) {
       shkaf3.current.position.x += 0.01; // Измените это значение, чтобы настроить скорость закрытия
       if (shkaf3.current.position.x >= 0.15) {
         shkaf3.current.position.x = 0.15; // Максимальное положение, когда дверца полностью закрыта
@@ -118,12 +118,12 @@ export function Model(props) {
   });
 
   useFrame(() => {
-    if (shkaf4Open) {
+    if (shkaf4Close) {
       shkaf4.current.position.x -= 0.01; // Измените это значение, чтобы настроить скорость открытия
       if (shkaf4.current.position.x <= -0.0809543) {
         shkaf4.current.position.x = -0.0809543; // Максимальное положение, когда дверца полностью открыта
       }
-    } else if (!shkaf4Open) {
+    } else if (!shkaf4Close) {
       shkaf4.current.position.x += 0.01; // Измените это значение, чтобы настроить скорость закрытия
       if (shkaf4.current.position.x >= 0.15) {
         shkaf4.current.position.x = 0.15; // Максимальное положение, когда дверца полностью закрыта
@@ -132,12 +132,12 @@ export function Model(props) {
   });
 
   useFrame(() => {
-    if (clothesOpen) {
+    if (clothesClose) {
       clothes.current.position.x -= 0.5; // Измените это значение, чтобы настроить скорость открытия
       if (clothes.current.position.x <= -19.759) {
         clothes.current.position.x = -19.759; // Максимальное положение, когда дверца полностью открыта
       }
-    } else if (!clothesOpen) {
+    } else if (!clothesClose) {
       clothes.current.position.x += 0.5; // Измените это значение, чтобы настроить скорость закрытия
       if (clothes.current.position.x >= -5.04) {
         clothes.current.position.x = -5.04; // Максимальное положение, когда дверца полностью закрыта
@@ -146,12 +146,12 @@ export function Model(props) {
   });
 
   useFrame(() => {
-    if (cartOpen && door2Open && door1Open) {
+    if (cartClose) {
       cart.current.position.x -= 0.01; // Измените это значение, чтобы настроить скорость открытия
       if (cart.current.position.x <= -0.03425545) {
         cart.current.position.x = -0.03425545; // Максимальное положение, когда дверца полностью открыта
       }
-    } else if (!cartOpen) {
+    } else if (!cartClose) {
       cart.current.position.x += 0.01; // Измените это значение, чтобы настроить скорость закрытия
       if (cart.current.position.x >= 0.15) {
         cart.current.position.x = 0.15; // Максимальное положение, когда дверца полностью закрыта
@@ -691,7 +691,7 @@ export function Model(props) {
           position={[-0.03425545, 0.08572441, 0.31679869]}
           rotation={[0, 1.57053468, 0]}
           scale={[0.01122629, 0.01, 0.01]}
-          onClick={() => door2Open && door1Open && setCartOpen((prev) => !prev)}
+          onClick={() => door2Open && door1Open && setCartClose((prev) => !prev)}
           onPointerOver={() => setIsCartHovered(true)}
           onPointerOut={() => setIsCartHovered(false)}>
           <meshStandardMaterial color={isCartHovered ? `${(door2Open && door1Open) ? "#846D41" :"#842F38" }` : "#EFEFEF"} />
@@ -749,7 +749,7 @@ export function Model(props) {
             name="clothes"
             ref={clothes}
             onClick={() =>
-              !door2Open && !door1Open && setClotheOpen((prev) => !prev)
+              !door2Open && !door1Open && setClotheClose((prev) => !prev)
             }
             position={[-19.04509544, 45.0717392, -0.29061902]}>
             <mesh
@@ -981,7 +981,7 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Mesh063_2.geometry}
             onClick={() =>
-              door2Open && door1Open && setShkaf2Open((prev) => !prev)
+              door2Open && door1Open && setShkaf2Close((prev) => !prev)
             }
             onPointerOver={() => setIsShkaf2Hovered(true)}
             onPointerOut={() => setIsShkaf2Hovered(false)}>
@@ -1165,7 +1165,7 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Mesh087_2.geometry}
             onClick={() =>
-              door2Open && door1Open && setShkaf3Open((prev) => !prev)
+              door2Open && door1Open && setShkaf3Close((prev) => !prev)
             }
             onPointerOver={() => setIsShkaf3Hovered(true)}
             onPointerOut={() => setIsShkaf3Hovered(false)}>
@@ -1227,7 +1227,7 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Mesh088_2.geometry}
             onClick={() =>
-              door2Open && door1Open && setShkaf4Open((prev) => !prev)
+              door2Open && door1Open && setShkaf4Close((prev) => !prev)
             }
             onPointerOver={() => setIsShkaf4Hovered(true)}
             onPointerOut={() => setIsShkaf4Hovered(false)}>
@@ -1289,7 +1289,7 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Mesh089_2.geometry}
             onClick={() =>
-              !door2Open && !door1Open && setShkaf1Open((prev) => !prev)
+              !door2Open && !door1Open && setShkaf1Close((prev) => !prev)
             }
             onPointerOver={() => setIsShkaf1Hovered(true)}
             onPointerOut={() => setIsShkaf1Hovered(false)}>
