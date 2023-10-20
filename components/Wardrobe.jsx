@@ -289,9 +289,11 @@ export function Model(props) {
             castShadow
             receiveShadow
             geometry={nodes.Box006.geometry}
-            material={materials["Material #25"]}
-            position={[-0.80000013, 119.99999237, 0.00000381]}
-          />
+            position={[-0.80000013, 119.99999237, 0.00000381]}>
+            <meshStandardMaterial
+          color={"#625850"}
+        />
+      </mesh>
           <mesh
             name="Box008"
             castShadow
@@ -386,8 +388,7 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Box022.geometry}
             material={materials["Material #25"]}
-            position={[-22.5, -111.40000916, -0.02796554]}
-          />
+            position={[-22.5, -111.40000916, -0.02796554]}/>
           <Html className="pointer-events-none "  position={[0, 0.90882832, 61.67114639]}>
             <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[200px] p-3 text-black select-none transition-all duration-100 ease-linear ${isDoor1Hovered || isDoor2Hovered ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p>Дверца</p>
