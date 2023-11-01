@@ -17,9 +17,9 @@ const Scene = () => {
         <Canvas
           shadows={"soft"}
           dpr={[1, 2]}
-          camera={{ position: [3, 1.2, -2], fov: 50 }}>
+          camera={{ position: [2.9, 1.1, -1.3], fov: 50 }}>
           
-            <group position={[0, -1.3, 0]}>
+            <group position={[0, -1.1, 0]}>
               <Model />
             </group>
           <directionalLight position={[0,2,0]} castShadow intensity={6}/>

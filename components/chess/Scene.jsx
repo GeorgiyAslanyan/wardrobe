@@ -7,12 +7,13 @@ import {
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import { Chess } from "./Chess";
+import { PuffLoader } from "react-spinners";
 
 
 const Scene = () => {  
     
   return (
-    <Suspense fallback={<div className="h-screen w-full flex justify-center items-center"> <p className="text-white">LOADING...</p> </div>}>
+    <Suspense fallback={<div className="h-screen w-full flex justify-center items-center"> <PuffLoader color={'white'} /> </div>}>
       <div className="w-full h-screen">
         <Canvas
           shadows={"soft"}
