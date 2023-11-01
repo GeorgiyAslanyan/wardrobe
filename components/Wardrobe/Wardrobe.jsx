@@ -292,9 +292,9 @@ export function Model(props) {
           />
         </group>
         <Html className="pointer-events-none "  position={[0, 0.90882832, 61.67114639]}>
-            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[300px] p-3 text-black select-none transition-all duration-100 ease-linear ${isDoor1Hovered || isDoor2Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
-                <p>Дверца</p>
-                <p>Нажмите что бы открыть</p>
+            <div className={` bg-white rounded-xl text-start shadow-lg text-xs pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${isDoor1Hovered || isDoor2Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="text-gray-900 border-b border-b-gray-400 pb-1">Нажмите что бы открыть</p>
+                <p className="break-all hyphens-auto">Дверца</p>
             </div>
         </Html>
         <group ref={door1}
@@ -499,9 +499,9 @@ export function Model(props) {
         />
       </group>
       <Html className="pointer-events-none "  position={[0, 0.29572441, 0.31679869]}>
-            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[300px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isCartHovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
-                <p>Корзинка</p>
-                <p>{door2Open && door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
+            <div className={` bg-white rounded-xl text-tart shadow-lg text-xs pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isCartHovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="text-gray-900 text-start border-b border-b-gray-400 pb-1">{door2Open && door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
+                <p className="break-all hyphens-auto">Корзинка</p>
             </div>
         </Html>
       <mesh
@@ -559,10 +559,10 @@ export function Model(props) {
         position={[0.05704273, 1.74500024, -0.36249992]}
         scale={0.01}
       />
-      <Html className="pointer-events-none "  position={[0, 1.26567757, -0.35959378]}>
-            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[300px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isClothesHovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
-                <p>Вешалка</p>
-                <p>{!door2Open && !door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
+      <Html className="pointer-events-none "  position={[0, 1.26567757, 0.3]}>
+            <div className={` bg-white rounded-xl text-start text-xs shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isClothesHovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="text-gray-900 border-b border-b-gray-400 pb-1">{!door2Open && !door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
+                <p className="break-all hyphens-auto">Вешалка</p>
             </div>
         </Html>
       <group position={[-0.02403762, 1.26567757, -0.35959378]} scale={0.01}>
@@ -684,9 +684,9 @@ export function Model(props) {
         scale={0.01}
       />
       <Html className="pointer-events-none "  position={[0, 0.90882832, 0.87950003]}>
-            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[300px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isPgraphHovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
-                <p>Пантограф</p>
-                <p>{door2Open && door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
+            <div className={` bg-white rounded-xl text-start shadow-lg text-xs pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isPgraphHovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="text-gray-900 border-b border-b-gray-400 pb-1">{door2Open && door1Open && !busy ? 'Можно достать' : 'Заблокировано дверью'}</p>
+                <p className="break-all hyphens-auto">Пантограф</p>
             </div>
         </Html>
       <group
@@ -776,9 +776,9 @@ export function Model(props) {
         />
       </group>
       <Html className="pointer-events-none "  position={[0, 1.78750074, 0.26930958]}>
-            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[300px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf2Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
-                <p className="text-xs">Ящик Boyard или Hettich скрытого монтажа, дно ДСП, с доводчиками, полное выдвижение</p>
-                <p>{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+            <div className={` bg-white rounded-xl text-start text-xs shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf2Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="text-gray-900 border-b border-b-gray-400 pb-1">{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+                <p className="break-all hyphens-auto">Ящик Boyard или Hettich скрытого монтажа, дно ДСП, с доводчиками, полное выдвижение</p>
             </div>
         </Html>
       <group name="shkaf2"
@@ -884,9 +884,9 @@ export function Model(props) {
         </group>
       </group>
       <Html className="pointer-events-none "  position={[0, 0.82459706, 0.26930958]}>
-            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[300px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf3Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
-                <p className="text-xs">Ящик Boyard или Hettich скрытого монтажа, дно ДСП, с доводчиками, полное выдвижение</p>
-                <p>{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+            <div className={` bg-white rounded-xl text-start shadow-lg text-xs pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf3Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="text-gray-900 border-b border-b-gray-400 pb-1">{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+                <p className="text-xs break-all hyphens-auto">Ящик Boyard или Hettich скрытого монтажа, дно ДСП, с доводчиками, полное выдвижение</p>
             </div>
         </Html>
       <group name="shkaf3"
@@ -930,9 +930,9 @@ export function Model(props) {
         />
       </group>
       <Html className="pointer-events-none "  position={[0, 0.50621921, 0.26930958]}>
-            <div className={` bg-white rounded-xl text-center shadow-lg  pointer-events-none backdrop-blur-2xl min-w-[300px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf4Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
-                <p className="text-xs">Ящик Boyard или Hettich скрытого монтажа, дно ДСП, с доводчиками, полное выдвижение</p>
-                <p>{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+            <div className={` bg-white rounded-xl text-start shadow-lg text-xs pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf4Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="text-gray-900  border-b border-b-gray-400 pb-1">{door2Open && door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+                <p className="text-xs break-all hyphens-auto">Ящик Boyard или Hettich скрытого монтажа, дно ДСП, с доводчиками, полное выдвижение</p>
             </div>
         </Html>
       <group name="shkaf4" ref={shkaf4} position={[0.12907869, 0.44519615, 0.2585001]} scale={0.01}>
@@ -974,10 +974,10 @@ export function Model(props) {
           material={materials["Material #25.014"]}
         />
       </group>
-      <Html className="pointer-events-none "  position={[0, 1.14772236, -0.6]}>
-            <div className={`bg-white rounded-xl text-center shadow-lg pointer-events-none backdrop-blur-2xl min-w-[300px] p-3 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf1Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
-                <p className="text-xs">Ящик Boyard или Hettich скрытого монтажа, дно ДСП, с доводчиками, полное выдвижение</p>
-                <p>{!door2Open && !door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+      <Html className="pointer-events-none "  position={[0, 1.14772236, 0.8]}>
+            <div className={`bg-white rounded-xl text-xs text-start shadow-lg pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isShkaf1Hovered ? 'bg-opacity-100 opacity-100 ' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="text-gray-900  border-b border-b-gray-400 pb-1">{!door2Open && !door1Open && !busy ? 'Можно открыть' : 'Заблокировано дверью'}</p>
+                <p className="text-xs break-all hyphens-auto">Ящик Boyard или Hettich скрытого монтажа, дно ДСП, с доводчиками, полное выдвижение</p>
             </div>
         </Html>
       <group name="shkaf1"
