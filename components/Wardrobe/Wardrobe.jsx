@@ -40,6 +40,8 @@ export function Model(props) {
   const [isClothesHovered, setIsClothesHovered] = useState(false);
   const [isCartHovered, setIsCartHovered] = useState(false);
   const [isPgraphHovered, setIsPgraphHovered] = useState(false);
+  const [isAristoHovered, setIsAristoHovered] = useState(false);
+  const [isRehaoHovered, setIsRehaoHovered] = useState(false);
 
   useFrame(() => {
     if (door1Open) {
@@ -287,14 +289,21 @@ export function Model(props) {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Mesh010_1.geometry}
-            material={materials["Material #26"]}
-          />
+            geometry={nodes.Mesh010_1.geometry}>
+              <meshStandardMaterial
+                color={!isDoor2Hovered && isAristoHovered ? "#846D41" : "#848484"}
+              />
+            </mesh>
         </group>
         <Html className="pointer-events-none "  position={[0, 0.90882832, 61.67114639]}>
             <div className={` bg-white rounded-xl text-start shadow-lg text-xs pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${isDoor1Hovered || isDoor2Hovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
                 <p className="text-gray-900 border-b border-b-gray-400 pb-1">Нажмите что бы открыть</p>
-                <p className="break-all hyphens-auto">Дверца</p>
+                <p className="break-all hyphens-auto">Зеркало &#34;AGC&#34;</p>
+            </div>
+        </Html>
+        <Html className="pointer-events-none "  position={[0, 0.90882832, 61.67114639]}>
+            <div className={` bg-white rounded-xl text-center shadow-lg text-xs pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isAristoHovered ? 'bg-opacity-100 opacity-100' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="break-all hyphens-auto">Профиль &#34;ARISTO&#34;</p>
             </div>
         </Html>
         <group ref={door1}
@@ -313,17 +322,23 @@ export function Model(props) {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Mesh003_1.geometry}
-            material={materials["Material #40"]}
-          />
+            geometry={nodes.Mesh003_1.geometry}>
+              <meshStandardMaterial
+                color={(!isDoor1Hovered && isAristoHovered) ? "#846D41" : "#848484"}
+              /> </mesh>
         </group>
+        
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Razdvizhnaja_sistema_Braun_Part_4.geometry}
-          material={materials["Material #26"]}
           position={[-18.76014709, -121.59999847, -48.28484726]}
-        />
+              onPointerOver={() => setIsAristoHovered(true)}
+              onPointerOut={() => setIsAristoHovered(false)}>
+              <meshStandardMaterial
+                color={isAristoHovered ? "#846D41" : "#848484"}
+              />
+            </mesh>
       </group>
       <mesh
         castShadow
@@ -980,6 +995,57 @@ export function Model(props) {
                 <p className="text-xs break-all hyphens-auto">Ящик Boyard или Hettich скрытого монтажа, дно ДСП, с доводчиками, полное выдвижение</p>
             </div>
         </Html>
+        <Html className="pointer-events-none "  position={[0, 1.14772236, 0.4]}>
+            <div className={`bg-white rounded-xl text-xs text-center shadow-lg pointer-events-none backdrop-blur-2xl min-w-[250px] p-2 text-black select-none transition-all duration-100 ease-linear ${!isDoor1Hovered && !isDoor2Hovered && isRehaoHovered ? 'bg-opacity-100 opacity-100 ' : 'bg-opacity-0 opacity-0'}`}>
+                <p className="text-xs break-all hyphens-auto">Кромка &#34;REHAU&#34;</p>
+            </div>
+        </Html>
+        <group position={[0.13919, 1.18571062, -0.72536515]} onPointerOver={() => !isDoor1Hovered && !isDoor2Hovered && setIsRehaoHovered(true)}
+          onPointerOut={() => setIsRehaoHovered(false)}>
+            <mesh receiveShadow>
+                  <boxGeometry attach="geometry" args={[0.01, 2.35, 0.02]} scale={0.01}/>
+                  <meshStandardMaterial
+                      color={isRehaoHovered ? `${(!door2Open && !door1Open  && !busy) ? "#846D41" :"#842F38" }` : "#5d4838"}
+                    />
+            </mesh>
+            <mesh position={[0,0.87,-0.25]} receiveShadow>
+                  <boxGeometry attach="geometry" args={[0.01, 0.02, 0.52]} scale={0.01}/>
+                  <meshStandardMaterial
+                      color={isRehaoHovered ? `${(!door2Open && !door1Open  && !busy) ? "#846D41" :"#842F38" }` : "#5d4838"}
+                    />
+            </mesh>
+            <mesh position={[0,0.55,-0.25]} receiveShadow>
+                  <boxGeometry attach="geometry" args={[0.01, 0.02, 0.52]} scale={0.01}/>
+                  <meshStandardMaterial
+                      color={isRehaoHovered ? `${(!door2Open && !door1Open  && !busy) ? "#846D41" :"#842F38" }` : "#5d4838"}
+                    />
+            </mesh>
+            <mesh position={[0,0.22,-0.25]} receiveShadow>
+                  <boxGeometry attach="geometry" args={[0.01, 0.02, 0.52]} scale={0.01}/>
+                  <meshStandardMaterial
+                      color={isRehaoHovered ? `${(!door2Open && !door1Open  && !busy) ? "#846D41" :"#842F38" }` : "#5d4838"}
+                    />
+            </mesh>
+            <mesh position={[0,-0.09,-0.25]} receiveShadow>
+                  <boxGeometry attach="geometry" args={[0.01, 0.02, 0.52]} scale={0.01}/>
+                  <meshStandardMaterial
+                      color={isRehaoHovered ? `${(!door2Open && !door1Open  && !busy) ? "#846D41" :"#842F38" }` : "#5d4838"}
+                    />
+            </mesh>
+            <mesh position={[0,-0.41,-0.25]} receiveShadow>
+                  <boxGeometry attach="geometry" args={[0.01, 0.02, 0.52]} scale={0.01}/>
+                  <meshStandardMaterial
+                      color={isRehaoHovered ? `${(!door2Open && !door1Open  && !busy) ? "#846D41" :"#842F38" }` : "#5d4838"}
+                    />
+            </mesh>
+            <mesh position={[0,-0.734,-0.25]} receiveShadow>
+                  <boxGeometry attach="geometry" args={[0.01, 0.02, 0.52]} scale={0.01}/>
+                  <meshStandardMaterial
+                      color={isRehaoHovered ? `${(!door2Open && !door1Open  && !busy) ? "#846D41" :"#842F38" }` : "#5d4838"}
+                    />
+            </mesh>
+        </group>
+        
       <group name="shkaf1"
           ref={shkaf1} position={[0.12919, 1.08271062, -0.98536515]} scale={0.01}>
         <mesh
