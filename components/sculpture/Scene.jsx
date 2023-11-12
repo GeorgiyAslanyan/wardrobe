@@ -1,8 +1,8 @@
 "use client";
 
-import { Environment, MeshReflectorMaterial, OrbitControls, ScrollControls } from "@react-three/drei";
+import { Environment, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense, useLayoutEffect, useRef } from "react";
+import React, { Suspense } from "react";
 
 import { PuffLoader } from "react-spinners";
 import { Sculpture } from "./Sculpture";
