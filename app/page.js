@@ -12,6 +12,12 @@ export default function Home() {
       </Link>
       <Link
         className="border overflow-hidden transition-all ease-linear duration-100 hover:shadow-lg border-gray-200 hover:border-blue-500 bg-white font-bold backdrop-blur-xl rounded-lg text-center text-black h-fit"
+        href={"/sphere"}>
+        <img className="w-full h-[100px] object-cover" src={'/sphere.png'}/>
+         <p className=" px-3 py-2">Sphere</p>
+      </Link>
+      <Link
+        className="border overflow-hidden transition-all ease-linear duration-100 hover:shadow-lg border-gray-200 hover:border-blue-500 bg-white font-bold backdrop-blur-xl rounded-lg text-center text-black h-fit"
         href={"/sculpture"}>
         <img className="w-full h-[100px] object-cover" src={'/sculpture.png'}/>
          <p className=" px-3 py-2">Scroll 3d</p>
