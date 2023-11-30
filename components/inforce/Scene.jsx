@@ -9,7 +9,7 @@ const Scene = () => {
   return (
     <Suspense fallback={<div className="h-screen w-full flex justify-center items-center"> <PuffLoader color={'white'} /> </div>}>
       <div className="w-full h-screen">
-          <Spline scene="https://prod.spline.design/OoTzujy3XbTUMSTr/scene.splinecode" />
+          <Spline scene="https://prod.spline.design/OoTzujy3XbTUMSTr/scene.splinecode"  />
       </div>
     </Suspense>
   );
