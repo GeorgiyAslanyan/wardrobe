@@ -17,7 +17,7 @@ const Scene = () => {
       </div> */}
     <Suspense fallback={<div className="h-screen w-full flex justify-center items-center"> <PuffLoader color={'white'} /> </div>}>
       <div className="w-screen h-screen">
-          <Spline scene="https://prod.spline.design/LLXph7-9uugBtBcj/scene.splinecode"  />
+          <Spline scene="https://prod.spline.design/LLXph7-9uugBtBcj/scene.splinecode"/>
       </div>
        {/* : active === 1 ?
       <div className="w-screen h-screen">
