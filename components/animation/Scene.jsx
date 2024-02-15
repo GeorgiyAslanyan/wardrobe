@@ -1,22 +1,36 @@
 "use client";
-import React, { Suspense, useState } from "react";
-import { PuffLoader } from "react-spinners";
-import Spline from "@splinetool/react-spline";
+import React from "react";
+import { Model } from "./Phone";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 
-
-const Scene = () => { 
-
+const Scene = () => {
   return (
     <div className="w-screen h-screen relative">
-      <div className="absolute flex gap-3 p-3 z-50 top-5 left-5 rounded-xl bg-black border border-neutral-800 text-white">
-      <a href="https://t.me/George1307" target="_blank" rel="noopener noreferrer">Telegram @George1307</a>
-      <p>Через kwork передавать контакты нельзя, поэтому тут оставил</p>
+      <div className="w-full h-screen">
+        <Canvas
+          shadows="basic"
+          dpr={[1, 2]}
+          camera={{ position: [0, 3, 10], fov: 50 }}
+        >
+          <group scale={0.7} position={[0, -3, 0]}>
+            <Model />
+          </group>
+          <directionalLight
+            name="Directional Light"
+            color="#fff"
+            intensity={7.5}
+            position={[-1, 2, 2]}
+            rotation={[0, 0, 0]}
+            scale={[1, 1, 2.1]}
+          />
+          <OrbitControls
+            enableZoom={false}
+            enableDamping={false}
+            enablePan={false}
+          />
+        </Canvas>
       </div>
-    <Suspense fallback={<div className="h-screen w-full flex justify-center items-center"> <PuffLoader color={'white'} /> </div>}>
-      <div className="w-screen h-screen">
-          <Spline scene="https://prod.spline.design/LLXph7-9uugBtBcj/scene.splinecode"/>
-      </div>
-    </Suspense>
     </div>
   );
 };
