@@ -214,7 +214,7 @@ export function Model(props) {
                 <mesh
                   name="Rectangle_2003"
                   geometry={nodes.Rectangle_2003.geometry}
-                  material={materials.phoneBase}
+                  material={materials.base}
                   position={[-0.001, -0.749, -0.015]}
                 />
                 <mesh
@@ -227,14 +227,14 @@ export function Model(props) {
               <mesh
                 name="Rectangle002"
                 geometry={nodes.Rectangle002.geometry}
-                material={materials.phoneBase}
+                material={materials.base}
                 position={[-0.264, 0, -6.036]}
                 scale={0.529}
               />
               <mesh
                 name="Screen"
                 geometry={nodes.Screen.geometry}
-                material={materials.Material}
+                material={materials["Material.001"]}
                 position={[-0.264, 0, 4.582]}
                 scale={0.529}
               />
